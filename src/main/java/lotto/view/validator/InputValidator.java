@@ -44,4 +44,13 @@ public class InputValidator {
         return !VALID_WINNING_NUMBERS_FORMAT.matcher(input)
                 .matches();
     }
+
+    public static void validateBonusNumber(String input) {
+        validateInput(input);
+
+        if (isNotDigit(input)) {
+            throw new IllegalArgumentException(
+                    String.format("보너스 번호에 대한 입력은 숫자만 가능합니다. (현재 입력된 값=%s)", input));
+        }
+    }
 }
