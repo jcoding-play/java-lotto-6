@@ -26,4 +26,13 @@ class InputValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("구입금액에 대한 입력은 숫자만 가능합니다. (현재 입력된 값=" + input + ")");
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"1,2,3,4,5", "1,2,3,4,5,a", "1,2,3,4,5,!", "1-2-3-4-5-6", "(1,2,3,4,5,6)"})
+    @DisplayName("당첨 번호에 대한 입력 형식이 올바르지 않으면 예외가 발생한다.")
+    void validateWinningNumbers(String input) {
+        assertThatThrownBy(() -> InputValidator.validateWinningNumbers(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("당첨 번호에 대한 입력 형식이 올바르지 않습니다. (현재 입력된 값=" + input + ")");
+    }
 }
