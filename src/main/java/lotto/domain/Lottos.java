@@ -15,4 +15,8 @@ public class Lottos {
             throw new IllegalArgumentException("로또는 최소 1개 이상이어야 합니다.");
         }
     }
+
+    public List<Lotto> getLottos() {
+        return lottos;
+    }
 }

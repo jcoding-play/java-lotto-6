@@ -23,6 +23,10 @@ public class LottoNumber {
         return bonusNumber.isMatchNumber(lottoNumber);
     }
 
+    public int getLottoNumber() {
+        return lottoNumber;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
