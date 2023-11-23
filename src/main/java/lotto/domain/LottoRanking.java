@@ -29,4 +29,8 @@ public enum LottoRanking {
     private boolean isMatch(int numberOfMatches, boolean hasBonusNumber) {
         return predicate.test(numberOfMatches, hasBonusNumber);
     }
+
+    public int getPrizeMoney() {
+        return prizeMoney;
+    }
 }

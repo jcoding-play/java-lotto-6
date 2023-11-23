@@ -1,9 +1,10 @@
 package lotto.domain;
 
+import lotto.utils.Constants;
+
 import java.util.Objects;
 
 public class PurchaseAmount {
-    private static final int LOTTO_PRICE = 1000;
     private static final int VALID_CHANGE = 0;
 
     private final int purchaseAmount;
@@ -14,22 +15,22 @@ public class PurchaseAmount {
     }
 
     private void validatePurchaseAmount(int purchaseAmount) {
-        if (purchaseAmount < LOTTO_PRICE) {
+        if (purchaseAmount < Constants.LOTTO_PRICE) {
             throw new IllegalArgumentException(
-                    String.format("구입 금액은 최소 %,d원 이상이어야 합니다.", LOTTO_PRICE));
+                    String.format("구입 금액은 최소 %,d원 이상이어야 합니다.", Constants.LOTTO_PRICE));
         }
         if (isInvalidPurchaseAmount(purchaseAmount)) {
             throw new IllegalArgumentException(
-                    String.format("구입 금액은 %,d원 단위어야 합니다.", LOTTO_PRICE));
+                    String.format("구입 금액은 %,d원 단위어야 합니다.", Constants.LOTTO_PRICE));
         }
     }
 
     private boolean isInvalidPurchaseAmount(int purchaseAmount) {
-        return purchaseAmount % LOTTO_PRICE != VALID_CHANGE;
+        return purchaseAmount % Constants.LOTTO_PRICE != VALID_CHANGE;
     }
 
     public int divideByLottoPrice() {
-        return purchaseAmount / LOTTO_PRICE;
+        return purchaseAmount / Constants.LOTTO_PRICE;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,17 +10,35 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.*;
 
 class WinningStatisticsTest {
+    private WinningStatistics winningStatistics;
+
+    @BeforeEach
+    void setUp() {
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        BonusNumber bonusNumber = new BonusNumber(7);
+        WinningLotto winningLotto = new WinningLotto(lotto, bonusNumber);
+        
+        winningStatistics = new WinningStatistics(winningLotto);
+    }
 
     @Test
     @DisplayName("사용자가 구매한 로또에 대해 전체 당첨 내역을 알 수 있다.")
     void checkLottoResult() {
-        WinningLotto winningLotto = new WinningLotto(new Lotto(List.of(1, 2, 3, 4, 5, 6)), new BonusNumber(7));
-        WinningStatistics winningStatistics = new WinningStatistics(winningLotto);
-
         List<Lotto> lottos = getLottos();
         Map<LottoRanking, Integer> result = winningStatistics.checkLottoResult(lottos);
 
         assertThat(result).contains(entry(LottoRanking.FIFTH, 1), entry(LottoRanking.NOTHING, 7));
+    }
+    
+    @Test
+    @DisplayName("사용자가 구매한 로또에 대해 전체 수익률을 계산할 수 있다.")
+    void calculateRateOfReturn() {
+        List<Lotto> lottos = getLottos();
+        Map<LottoRanking, Integer> result = winningStatistics.checkLottoResult(lottos);
+
+        double rateOfReturn = winningStatistics.calculateRateOfReturn(result);
+
+        assertThat(rateOfReturn).isEqualTo(62.5);
     }
 
     private List<Lotto> getLottos() {
