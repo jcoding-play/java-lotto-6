@@ -32,4 +32,15 @@ public class Lotto {
     private boolean hasDuplicatedNumber(List<Integer> numbers) {
         return numbers.size() != new HashSet<>(numbers).size();
     }
+
+    public int countNumberOfMatches(Lotto lotto) {
+        return (int) numbers.stream()
+                .filter(lotto::hasLottoNumber)
+                .count();
+    }
+
+    private boolean hasLottoNumber(LottoNumber lottoNumber) {
+        return numbers.stream()
+                .anyMatch(number -> number.equals(lottoNumber));
+    }
 }
