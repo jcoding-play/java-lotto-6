@@ -1,11 +1,11 @@
 package lotto.domain;
 
+import lotto.utils.Constants;
+
 import java.util.HashSet;
 import java.util.List;
 
 public class Lotto {
-    private static final int LOTTO_NUMBERS_SIZE = 6;
-
     private final List<LottoNumber> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -20,9 +20,9 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != LOTTO_NUMBERS_SIZE) {
+        if (numbers.size() != Constants.LOTTO_NUMBERS_SIZE) {
             throw new IllegalArgumentException(
-                    String.format("로또 번호의 개수는 %d개어야 합니다.", LOTTO_NUMBERS_SIZE));
+                    String.format("로또 번호의 개수는 %d개어야 합니다.", Constants.LOTTO_NUMBERS_SIZE));
         }
         if (hasDuplicatedNumber(numbers)) {
             throw new IllegalArgumentException("로또 번호에 중복된 숫자가 존재할 수 없습니다.");

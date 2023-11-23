@@ -2,10 +2,9 @@ package lotto.domain;
 
 import java.util.Objects;
 
-public class LottoNumber {
-    private static final int MINIMUM_LOTTO_NUMBER = 1;
-    private static final int MAXIMUM_LOTTO_NUMBER = 45;
+import static lotto.utils.Constants.*;
 
+public class LottoNumber {
     private final int lottoNumber;
 
     public LottoNumber(int lottoNumber) {

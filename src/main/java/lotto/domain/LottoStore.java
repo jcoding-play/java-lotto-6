@@ -5,6 +5,8 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
 import java.util.stream.Stream;
 
+import static lotto.utils.Constants.*;
+
 public class LottoStore {
 
     public List<Lotto> buyLotto(PurchaseAmount purchaseAmount) {
@@ -23,6 +25,6 @@ public class LottoStore {
     }
 
     private List<Integer> pickUniqueNumbers() {
-        return Randoms.pickUniqueNumbersInRange(1, 45, 6);
+        return Randoms.pickUniqueNumbersInRange(MINIMUM_LOTTO_NUMBER, MAXIMUM_LOTTO_NUMBER, LOTTO_NUMBERS_SIZE);
     }
 }
