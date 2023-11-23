@@ -3,21 +3,22 @@ package lotto.domain;
 import camp.nextstep.edu.missionutils.Randoms;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static lotto.utils.Constants.*;
 
 public class LottoStore {
 
-    public List<Lotto> buyLotto(PurchaseAmount purchaseAmount) {
+    public Lottos buyLotto(PurchaseAmount purchaseAmount) {
         int result = purchaseAmount.divideByLottoPrice();
         return generateLottos(result);
     }
 
-    private List<Lotto> generateLottos(int size) {
+    private Lottos generateLottos(int size) {
         return Stream.generate(this::generateLotto)
                 .limit(size)
-                .toList();
+                .collect(Collectors.collectingAndThen(Collectors.toList(), Lottos::new));
     }
 
     private Lotto generateLotto() {
