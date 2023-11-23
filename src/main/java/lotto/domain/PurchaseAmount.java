@@ -28,6 +28,10 @@ public class PurchaseAmount {
         return purchaseAmount % LOTTO_PRICE != VALID_CHANGE;
     }
 
+    public int divideByLottoPrice() {
+        return purchaseAmount / LOTTO_PRICE;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
