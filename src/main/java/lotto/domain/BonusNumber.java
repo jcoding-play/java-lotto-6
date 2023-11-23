@@ -20,6 +20,10 @@ public class BonusNumber {
         }
     }
 
+    public boolean isMatchNumber(int number) {
+        return this.bonusNumber == number;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -4,6 +4,7 @@ import lotto.utils.Constants;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 
 public class Lotto {
     private final List<LottoNumber> numbers;
@@ -42,5 +43,23 @@ public class Lotto {
     private boolean hasLottoNumber(LottoNumber lottoNumber) {
         return numbers.stream()
                 .anyMatch(number -> number.equals(lottoNumber));
+    }
+
+    public boolean hasBonusNumber(BonusNumber bonusNumber) {
+        return numbers.stream()
+                .anyMatch(lottoNumber -> lottoNumber.isSameNumber(bonusNumber));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Lotto lotto = (Lotto) o;
+        return Objects.equals(numbers, lotto.numbers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numbers);
     }
 }

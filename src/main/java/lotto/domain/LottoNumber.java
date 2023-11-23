@@ -19,6 +19,10 @@ public class LottoNumber {
         }
     }
 
+    public boolean isSameNumber(BonusNumber bonusNumber) {
+        return bonusNumber.isMatchNumber(lottoNumber);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
